@@ -1,0 +1,21 @@
+.seccion-card {
+  background-color: #fff;
+  padding: 10px;
+  margin: 5px;
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2;
+}
+
+@media ( min-width: 768px ) {
+  .grid-container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}

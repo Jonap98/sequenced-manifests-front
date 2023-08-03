@@ -1,0 +1,9 @@
+.navbar {
+  height: 8vh;
+}
+
+.main-content {
+  background-color: #f2efed;
+  height: 100%;
+  padding: 2rem;
+}

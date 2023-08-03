@@ -1,0 +1,41 @@
+
+<div class="main-content">
+
+  <h3>Seleccionar brazo</h3>
+
+  <hr>
+
+  <!-- <h3>Seleccionar brazo</h3> -->
+  <div class="d-flex justify-content-evenly">
+
+    <button *ngFor="let brazo of brazos" class="btn btn-primary" (click)="seleccionarBrazo( brazo )">
+      {{ brazo['brazo'] }}
+    </button>
+
+  </div>
+
+  <div *ngIf="!selectedLine else estaciones" class="d-flex justify-content-center" >
+
+  </div>
+
+  <ng-template #estaciones>
+    <div class="mt-5 d-flex justify-content-center">
+      <div class="grid-container">
+
+        <div class="seccion-card"
+          *ngFor="let seccion of secciones"
+          (click)="seleccionarSeccion( seccion.tramo )">
+          {{ seccion.tramo }}
+        </div>
+
+      </div>
+
+
+
+
+      <!-- <code>{{ secciones }}</code> -->
+    </div>
+  </ng-template>
+
+
+</div>

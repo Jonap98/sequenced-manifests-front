@@ -1,0 +1,80 @@
+/* .navbar {
+  height: 8vh;
+}
+.main-content {
+  background-color: #f2efed;
+  height: 92vh;
+  padding: 2rem;
+} */
+
+.card-item {
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Roboto;
+}
+
+.secondary-card {
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Roboto;
+
+  height: 50px;
+}
+
+
+
+/* scroll */
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+
+::-webkit-scrollbar {display: none;}
+
+
+
+
+
+/* Image size */
+.box{
+  width: 300px;
+  height: 300px;
+  background: #CCC;
+  overflow: hidden;
+}
+
+.box img{
+  width: 100%;
+  height: auto;
+}
+@supports(object-fit: cover){
+    .box img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}

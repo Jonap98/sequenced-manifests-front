@@ -1,0 +1,152 @@
+
+<div class="">
+
+  <div class="d-flex justify-content-between">
+    <h1>Manifiestos secuenciados</h1>
+    <div class="p-2">
+      <button class="btn btn-primary" (click)="regresar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+          <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+        </svg>
+        Regresar
+      </button>
+
+      <!-- <button class="btn btn-primary" (click)="actualizar()">
+        Actualizar
+      </button> -->
+      <button class="btn btn-primary" (click)="cancelInterval()">
+        Cancelar
+      </button>
+
+    </div>
+  </div>
+
+  <hr>
+
+
+  <div class="d-flex justify-content-between">
+
+    <div >
+      <h3>Brazo: {{ brazo }}</h3>
+      <h3>Tramo: {{ seccion }}</h3>
+    </div>
+
+    <div class="filters col-md-3">
+      <span>Mostrar registros</span>
+      <select name="cantidad-registros" id="" class="form-select">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+      </select>
+      <button class="btn btn-primary mt-2">Aplicar</button>
+    </div>
+  </div>
+
+
+  <ng-template #divLoading class="d-flex justify-content-center">
+    <div class="spinner-border text-primary"></div>
+  </ng-template>
+
+  <div *ngFor="let manifiesto of manifiestosList; index as i">
+    <div *ngIf="i == 0 else secondaryCard">
+
+      <div class="mt-2 card-item">
+        <div class="row bd-highlight">
+          <div class="col-3 d-flex flex-column justify-content-center align-items-center flex-grow-1 bd-highlight" [ngClass]="i == 0 ? '' : ''">
+            <h1>{{ manifiesto.seq }}</h1>
+            <h2>{{ manifiesto.NumSerie }}</h2>
+            <h2>{{ manifiesto.modelo }}</h2>
+            <!-- <h1>Modelo</h1> -->
+            <!-- <h2>HR1234</h2> -->
+          </div>
+
+          <div class="m-4 col-8 d-flex justify-content-evenly">
+            <!-- <span>{{ manifiesto.materiales | json }}</span> -->
+
+            <!-- <div class="m-2 bg-white" *ngFor="let material of manifiesto.materiales">
+              <span >{{ material.Parte }}</span>
+            </div> -->
+
+            <div class="d-flex d-inline scrollmenu">
+              <!-- <span *ngFor="let material of manifiesto.materiales">
+                {{ material.Parte }}
+              </span> -->
+
+              <!-- <div class="m-2 card-item col-12 col-md-2 bg-primary" *ngFor="let material of manifiesto.materiales">
+                <div  class="" style="height:100px;">
+                  <img src="{{ imagen+material.Parte+'.jpg' }}" class="card-img-top object-fit-cover" style="height:100%;">
+
+                </div>
+              </div> -->
+
+
+              <!-- <div
+                *ngFor="let material of manifiesto.materiales"
+                class="box " style="width: 250px">
+                  <img class="" src="{{ imagen+material.Parte+'.jpg' }}"  alt="..." >
+              </div> -->
+
+              <!-- Jala OK, se sale un poco la imagen -->
+              <div
+                *ngFor="let material of manifiesto.materiales"
+                class="m-2 card-item d-flex flex-column justify-content-center align-items-center bd-highlight" style=" height: 10rem; width: 10rem;">
+                  <img class="rounded object-fit-cover" src="{{ imagen+material.Parte+'.jpg' }}"  alt="..." height="70%" width="150px">
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{ material.Parte }}
+                    </p>
+                  </div>
+              </div>
+
+              <!-- <div *ngFor="let material of manifiesto.materiales"
+                class="m-2 card-item d-flex flex-column justify-content-center align-items-center bd-highlight" style="height: 200px; width: 200px">
+                <img class="rounded object-fit-cover" src="{{ imagen+material.Parte+'.jpg' }}" alt="" height="70%" width="250px">
+                <h4>{{ material.Parte }}</h4>
+              </div> -->
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <ng-template #secondaryCard>
+
+      <div class="mt-4 ps-4 secondary-card">
+        <div class="row ">
+          <div class="col-4 d-flex justify-content-between align-items-center">
+            <span>{{ manifiesto.seq }}</span>
+            <span>{{ manifiesto.NumSerie }}</span>
+            <span>{{ manifiesto.modelo }}</span>
+          </div>
+
+          <div class="col-8 d-flex justify-content-evenly">
+
+            <div class="d-flex d-inline scrollmenu">
+
+              <div
+                *ngFor="let material of manifiesto.materiales"
+                class="p-2 d-flex justify-content-between" style="width: 200px;">
+                <h4>{{ material.Parte }}</h4>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+
+
+
+
+</div>
