@@ -18,6 +18,10 @@
 
   </div>
 
+  <div *ngIf="!selectedStation else ubicacionesId" class="d-flex justify-content-center" >
+
+  </div>
+
   <ng-template #estaciones>
     <div class="mt-5 d-flex justify-content-center">
       <div class="grid-container">
@@ -30,10 +34,21 @@
 
       </div>
 
+    </div>
+  </ng-template>
 
+  <ng-template #ubicacionesId>
+    <div class="mt-5 d-flex justify-content-center">
+      <div class="grid-container">
 
+        <div class="seccion-card"
+          *ngFor="let ubicacion of ubicaciones"
+          (click)="seleccionarUbicacion( ubicacion.ubicacion )">
+          {{ ubicacion.ubicacion }}
+        </div>
 
-      <!-- <code>{{ secciones }}</code> -->
+      </div>
+
     </div>
   </ng-template>
 

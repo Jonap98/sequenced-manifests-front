@@ -19,6 +19,8 @@ export class SeleccionPageComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('brazo');
     localStorage.removeItem('seccion');
+    localStorage.removeItem('num_serie');
+    localStorage.removeItem('diferencia');
 
     this.seleccionService.getBrazos()
       .subscribe( ({data}) => {
@@ -30,8 +32,10 @@ export class SeleccionPageComponent implements OnInit {
 
 
   public selectedLine?: any;
+  public selectedStation?: any;
 
   public secciones?: any[];
+  public ubicaciones?: any[];
 
   seleccionarBrazo( brazo: any ) {
     this.selectedLine = brazo;
@@ -44,8 +48,21 @@ export class SeleccionPageComponent implements OnInit {
       })
   }
 
-  seleccionarSeccion( seccion: string ) {
+  seleccionarSeccion( seccion: any ) {
     localStorage.setItem('seccion', seccion)
+    // this.router.navigate(['manifiestos/manifiestos']);
+    console.log(this.selectedLine)
+    this.selectedStation = seccion;
+    console.log(seccion)
+    this.seleccionService.getUbicaciones(this.selectedLine.brazo, seccion)
+      .subscribe( ubicaciones => {
+        console.log(ubicaciones);
+        this.ubicaciones = ubicaciones.data;
+      })
+  }
+
+  seleccionarUbicacion( ubicacion: string ) {
+    localStorage.setItem('ubicacion', ubicacion)
     this.router.navigate(['manifiestos/manifiestos']);
   }
 

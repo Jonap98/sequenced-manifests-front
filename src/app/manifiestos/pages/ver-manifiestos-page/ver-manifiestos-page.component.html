@@ -11,13 +11,6 @@
         Regresar
       </button>
 
-      <!-- <button class="btn btn-primary" (click)="actualizar()">
-        Actualizar
-      </button> -->
-      <button class="btn btn-primary" (click)="cancelInterval()">
-        Cancelar
-      </button>
-
     </div>
   </div>
 
@@ -29,7 +22,32 @@
     <div >
       <h3>Brazo: {{ brazo }}</h3>
       <h3>Tramo: {{ seccion }}</h3>
+      <h3>Ubicación: {{ ubicacion }}</h3>
     </div>
+
+    <div class="filters col-md-3">
+      <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sincronizar" (click)="initModalContent()">Sincronizar</button>
+    </div>
+
+    <div class="modal fade" id="sincronizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="titleModalLabel">Sincronizar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="removeModalContent()"></button>
+          </div>
+          <div *ngIf="!isActive else modalContent">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #modalContent>
+      <sincronizar-manifiestos
+        (onSyncData)="syncData($event)"
+      ></sincronizar-manifiestos>
+    </ng-template>
 
     <div class="filters col-md-3">
       <span>Mostrar registros</span>
@@ -42,6 +60,7 @@
       </select>
       <button class="btn btn-primary mt-2">Aplicar</button>
     </div>
+
   </div>
 
 
@@ -58,35 +77,11 @@
             <h1>{{ manifiesto.seq }}</h1>
             <h2>{{ manifiesto.NumSerie }}</h2>
             <h2>{{ manifiesto.modelo }}</h2>
-            <!-- <h1>Modelo</h1> -->
-            <!-- <h2>HR1234</h2> -->
           </div>
 
           <div class="m-4 col-8 d-flex justify-content-evenly">
-            <!-- <span>{{ manifiesto.materiales | json }}</span> -->
-
-            <!-- <div class="m-2 bg-white" *ngFor="let material of manifiesto.materiales">
-              <span >{{ material.Parte }}</span>
-            </div> -->
 
             <div class="d-flex d-inline scrollmenu">
-              <!-- <span *ngFor="let material of manifiesto.materiales">
-                {{ material.Parte }}
-              </span> -->
-
-              <!-- <div class="m-2 card-item col-12 col-md-2 bg-primary" *ngFor="let material of manifiesto.materiales">
-                <div  class="" style="height:100px;">
-                  <img src="{{ imagen+material.Parte+'.jpg' }}" class="card-img-top object-fit-cover" style="height:100%;">
-
-                </div>
-              </div> -->
-
-
-              <!-- <div
-                *ngFor="let material of manifiesto.materiales"
-                class="box " style="width: 250px">
-                  <img class="" src="{{ imagen+material.Parte+'.jpg' }}"  alt="..." >
-              </div> -->
 
               <!-- Jala OK, se sale un poco la imagen -->
               <div
@@ -100,12 +95,6 @@
                   </div>
               </div>
 
-              <!-- <div *ngFor="let material of manifiesto.materiales"
-                class="m-2 card-item d-flex flex-column justify-content-center align-items-center bd-highlight" style="height: 200px; width: 200px">
-                <img class="rounded object-fit-cover" src="{{ imagen+material.Parte+'.jpg' }}" alt="" height="70%" width="250px">
-                <h4>{{ material.Parte }}</h4>
-              </div> -->
-
             </div>
 
           </div>
@@ -113,8 +102,6 @@
         </div>
       </div>
     </div>
-
-
 
     <ng-template #secondaryCard>
 
@@ -145,8 +132,5 @@
     </ng-template>
 
   </div>
-
-
-
 
 </div>

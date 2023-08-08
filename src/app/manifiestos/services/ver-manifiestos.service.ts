@@ -15,10 +15,18 @@ export class VerManifiestosService {
     private http: HttpClient
   ) { }
 
-  getManifiestos( brazo: string, seccion: string ): Observable<any> {
-    const resp = this.http.get(`${this.urlBase}/get-lecturas/${brazo}/${seccion}`);
-    // console.log('resp')
-    // console.log(resp)
+  getManifiestos( brazo: string, seccion: string, ubicacion: string ): Observable<any> {
+    const resp = this.http.get(`${this.urlBase}/get-lecturas/${brazo}/${seccion}/${ubicacion}`);
+    return resp;
+  }
+
+  getManifiestosByNumSerie( brazo: string, seccion: string, ubicacion: string, num_serie: number ): Observable<any> {
+    // console.log('Service')
+    // console.log(brazo)
+    // console.log(seccion)
+    // console.log(num_serie)
+    // console.log(num_serie)
+    const resp = this.http.get(`${this.urlBase}/get-lecturas-serie/${brazo}/${seccion}/${ubicacion}/${num_serie}`);
     return resp;
   }
 }

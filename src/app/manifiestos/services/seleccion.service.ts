@@ -22,6 +22,12 @@ export class SeleccionService {
     return this.http.get<any>(`${this.urlBase}/get-secciones/${brazo}`);
   }
 
+  getUbicaciones( brazo: string, seccion: string ): Observable<any> {
+    console.log(brazo)
+    console.log(seccion)
+    return this.http.get<any>(`${this.urlBase}/get-ubicaciones/${brazo}/${seccion}`);
+  }
+
   getManifiestos(): Observable<any> {
     return this.http.get(`${this.urlBase}/get-lecturas`);
   }

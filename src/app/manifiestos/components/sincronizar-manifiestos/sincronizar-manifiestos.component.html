@@ -1,0 +1,13 @@
+<div class="modal-body">
+  <form
+    [formGroup]="syncForm!"
+  >
+    <div class="m-2">
+      <span>Número de serie</span>
+      <input type="text" class="form-control" formControlName="num_serie" placeholder="Número de serie...">
+    </div>
+    <div class="m-2 d-grid gap-2">
+      <button class="btn btn-primary" data-bs-dismiss="modal" (click)="onSincronizar()">Sincronizar</button>
+    </div>
+  </form>
+</div>
