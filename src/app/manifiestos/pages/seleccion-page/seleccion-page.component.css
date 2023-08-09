@@ -12,10 +12,33 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2;
+  /* overflow: hidden; */
 }
 
-@media ( min-width: 768px ) {
+/* @media ( min-width: 768px ) { */
+@media ( min-width: 795px ) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media ( min-width: 960px ) {
+  .grid-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media ( min-width: 1200px ) {
   .grid-container {
     grid-template-columns: repeat(10, 1fr);
   }
+}
+
+
+.text{
+  float: right;
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+  margin: 0 0 1em 1em;
 }

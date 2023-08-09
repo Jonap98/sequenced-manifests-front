@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Error404PageComponent } from './shared/error404-page/error404-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Error404PageComponent
   ],
   imports: [
     BrowserModule,
