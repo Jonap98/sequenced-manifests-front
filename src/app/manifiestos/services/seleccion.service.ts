@@ -23,8 +23,6 @@ export class SeleccionService {
   }
 
   getUbicaciones( brazo: string, seccion: string ): Observable<any> {
-    console.log(brazo)
-    console.log(seccion)
     return this.http.get<any>(`${this.urlBase}/get-ubicaciones/${brazo}/${seccion}`);
   }
 

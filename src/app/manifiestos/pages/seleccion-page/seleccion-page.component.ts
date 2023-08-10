@@ -24,7 +24,6 @@ export class SeleccionPageComponent implements OnInit {
 
     this.seleccionService.getBrazos()
       .subscribe( ({data}) => {
-        console.log(data);
         this.brazos = data;
       })
 
@@ -43,20 +42,16 @@ export class SeleccionPageComponent implements OnInit {
 
     this.seleccionService.getSecciones(brazo.brazo)
       .subscribe( secciones => {
-        console.log(secciones);
         this.secciones = secciones.data;
       })
   }
 
   seleccionarSeccion( seccion: any ) {
     localStorage.setItem('seccion', seccion)
-    // this.router.navigate(['manifiestos/manifiestos']);
-    console.log(this.selectedLine)
     this.selectedStation = seccion;
-    console.log(seccion)
+
     this.seleccionService.getUbicaciones(this.selectedLine.brazo, seccion)
       .subscribe( ubicaciones => {
-        console.log(ubicaciones);
         this.ubicaciones = ubicaciones.data;
       })
   }

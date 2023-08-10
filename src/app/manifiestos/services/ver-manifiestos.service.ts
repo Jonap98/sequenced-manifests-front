@@ -21,11 +21,6 @@ export class VerManifiestosService {
   }
 
   getManifiestosByNumSerie( brazo: string, seccion: string, ubicacion: string, num_serie: number ): Observable<any> {
-    // console.log('Service')
-    // console.log(brazo)
-    // console.log(seccion)
-    // console.log(num_serie)
-    // console.log(num_serie)
     const resp = this.http.get(`${this.urlBase}/get-lecturas-serie/${brazo}/${seccion}/${ubicacion}/${num_serie}`);
     return resp;
   }

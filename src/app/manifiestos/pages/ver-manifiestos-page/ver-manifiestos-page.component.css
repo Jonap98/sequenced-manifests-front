@@ -78,3 +78,42 @@ div.scrollmenu a:hover {
       object-position: center center;
     }
 }
+
+.primary-text h1, h2 {
+  float: right;
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+}
+
+@media ( max-width: 1400px ) {
+  .primary-text h1, h2 {
+    /* color: aqua; */
+    font-size: 1.5rem;
+  }
+
+  .secondary-text span {
+    /* color: aqua; */
+    font-size: .8rem;
+  }
+
+  .terceary-text h4 {
+    /* color: aqua; */
+    font-size: 1rem;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+@media ( max-width: 960px ) {
+  .secondary-text span {
+    /* color: aqua; */
+    font-size: .6rem;
+  }
+
+  .terceary-text h4 {
+    font-size: .6rem;
+    margin: 0px;
+    padding: 0px;
+  }
+}

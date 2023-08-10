@@ -24,9 +24,7 @@ export class VerManifiestosPageComponent implements OnInit {
 
     if( this.initialPosition == '0' ) {
       this.actualizar();
-        // console.log('zero initial');
       } else {
-      // console.log('initial with value', this.initialPosition);
       this.sincronizar();
     }
   }
@@ -69,10 +67,8 @@ export class VerManifiestosPageComponent implements OnInit {
         this.numero_de_serie = localStorage.getItem('num_serie') ?? '';
         if( this.numero_de_serie == '' ) {
           this.actualizar();
-          // console.log('Zero num interval')
         } else {
           this.sincronizar();
-          // console.log('Initial with value')
         }
       }
     }, 5000);
@@ -82,9 +78,7 @@ export class VerManifiestosPageComponent implements OnInit {
 
     if( this.initialPosition == '0' ) {
       this.actualizar();
-        // console.log('zero initial oninit');
       } else {
-      // console.log('initial with value', this.initialPosition);
       this.sincronizar();
     }
 
@@ -138,16 +132,6 @@ export class VerManifiestosPageComponent implements OnInit {
       localStorage.getItem('ubicacion') ?? '',
     )
       .subscribe( ({data})  => {
-        // console.log({'num serie:': this.numero_de_serie})
-        // lista = data;
-        // let index = 0;
-        // data.forEach((element: any) => {
-        //   index++;
-        //   if( element.NumSerie == this.numero_de_serie ) {
-        //     this.ultimoNumero = index;
-        //     localStorage.setItem('diferencia', index.toString())
-        //   }
-        // });
 
         this.manifiestosService.getManifiestosByNumSerie(
           localStorage.getItem('brazo') ?? '',

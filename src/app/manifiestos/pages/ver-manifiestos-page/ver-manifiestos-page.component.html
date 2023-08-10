@@ -73,7 +73,7 @@
 
       <div class="mt-2 card-item">
         <div class="row bd-highlight">
-          <div class="col-3 d-flex flex-column justify-content-center align-items-center flex-grow-1 bd-highlight" [ngClass]="i == 0 ? '' : ''">
+          <div class="primary-text col-3 d-flex flex-column justify-content-center align-items-center flex-grow-1 bd-highlight" [ngClass]="i == 0 ? '' : ''">
             <h1>{{ manifiesto.seq }}</h1>
             <h2>{{ manifiesto.NumSerie }}</h2>
             <h2>{{ manifiesto.modelo }}</h2>
@@ -105,21 +105,21 @@
 
     <ng-template #secondaryCard>
 
-      <div class="mt-4 ps-4 secondary-card">
-        <div class="row ">
-          <div class="col-4 d-flex justify-content-between align-items-center">
-            <span>{{ manifiesto.seq }}</span>
-            <span>{{ manifiesto.NumSerie }}</span>
-            <span>{{ manifiesto.modelo }}</span>
+      <div class="mt-4 ps-2 pt-2 secondary-card ">
+        <div class="row">
+          <div class="secondary-text col-4 d-flex justify-content-start align-items-center">
+            <span class="ms-4">{{ manifiesto.seq }}</span>
+            <span class="ms-4">{{ manifiesto.NumSerie }}</span>
+            <span class="ms-4">{{ manifiesto.modelo }}</span>
           </div>
 
           <div class="col-8 d-flex justify-content-evenly">
 
-            <div class="d-flex d-inline scrollmenu">
+            <div class="d-flex d-inline scrollmenu align-items-center">
 
               <div
                 *ngFor="let material of manifiesto.materiales"
-                class="p-2 d-flex justify-content-between" style="width: 200px;">
+                class="terceary-text p-2 d-flex justify-content-between" style="width: 200px;">
                 <h4>{{ material.Parte }}</h4>
               </div>
 
