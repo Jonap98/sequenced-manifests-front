@@ -15,13 +15,18 @@ export class VerManifiestosService {
     private http: HttpClient
   ) { }
 
-  getManifiestos( brazo: string, seccion: string, ubicacion: string ): Observable<any> {
-    const resp = this.http.get(`${this.urlBase}/get-lecturas/${brazo}/${seccion}/${ubicacion}`);
+  getManifiestos( brazo: string, seccion: string, ubicacion: string, cantidad: number = 15 ): Observable<any> {
+    const resp = this.http.get(`${this.urlBase}/get-lecturas/${brazo}/${seccion}/${ubicacion}/${cantidad}`);
     return resp;
   }
 
-  getManifiestosByNumSerie( brazo: string, seccion: string, ubicacion: string, num_serie: number ): Observable<any> {
-    const resp = this.http.get(`${this.urlBase}/get-lecturas-serie/${brazo}/${seccion}/${ubicacion}/${num_serie}`);
+  getManifiestosByNumSerie( brazo: string, seccion: string, ubicacion: string, num_serie: number, cantidad: number = 25 ): Observable<any> {
+    const resp = this.http.get(`${this.urlBase}/get-lecturas-serie/${brazo}/${seccion}/${ubicacion}/${num_serie}/${cantidad}`);
     return resp;
+  }
+
+  getManifiestosByDifference( brazo: string, seccion: string, ubicacion: string, num_serie: number, cantidad: number = 25 ): Observable<any> {
+    const resp = this.http.get(`${this.urlBase}/get-lecturas-difference/${brazo}/${seccion}/${ubicacion}/${cantidad}`);
+    return resp
   }
 }

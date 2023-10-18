@@ -2,6 +2,16 @@
 <div class="">
 
   <div class="d-flex justify-content-between">
+    <div (click)="ocultar()" class="cursor">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0c6ffd" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+      </svg>
+      <span>
+        Ocultar
+      </span>
+    </div>
+
     <h1>Manifiestos secuenciados</h1>
     <div class="p-2">
       <button class="btn btn-primary" (click)="regresar()">
@@ -16,6 +26,7 @@
 
   <hr>
 
+  <div id="snackbar" [ngClass]="success ? 'show' : ''">{{ snackbarMessage }}</div>
 
   <div class="d-flex justify-content-between">
 
@@ -25,8 +36,21 @@
       <h3>Ubicación: {{ ubicacion }}</h3>
     </div>
 
-    <div class="filters col-md-3">
-      <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sincronizar" (click)="initModalContent()">Sincronizar</button>
+    <div class="row">
+      <div class="d-flex justify-content-center align-items-center flex-column">
+        <h4>Sincronizar</h4>
+          <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sincronizar" (click)="syncBySerial()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
+              <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z"/>
+            </svg>
+          </button>
+
+          <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#sincronizar" (click)="syncByDifference()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
+              <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
+            </svg>
+          </button>
+      </div>
     </div>
 
     <div class="modal fade" id="sincronizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
@@ -45,19 +69,23 @@
 
     <ng-template #modalContent>
       <sincronizar-manifiestos
+        [titulo]="modalTitle"
+        [bySerial]="bySerial"
         (onSyncData)="syncData($event)"
       ></sincronizar-manifiestos>
     </ng-template>
 
     <div class="filters col-md-3">
       <span>Mostrar registros</span>
-      <select name="cantidad-registros" id="" class="form-select">
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-        <option value="30">30</option>
-      </select>
+      <form [formGroup]="qtyForm!">
+        <select formControlName="cantidad" id="" class="form-select" (change)="onSetQty()">
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+        </select>
+      </form>
       <button class="btn btn-primary mt-2">Aplicar</button>
     </div>
 
@@ -71,7 +99,8 @@
   <div *ngFor="let manifiesto of manifiestosList; index as i">
     <div *ngIf="i == 0 else secondaryCard">
 
-      <div class="mt-2 card-item">
+      <div class="mt-2 card-item" style="background-color: {{ manifiesto.color }}; color: #fff">
+        <!-- <button class="btn" style="background-color: {{ manifiesto.color }}"></button> -->
         <div class="row bd-highlight">
           <div class="primary-text col-3 d-flex flex-column justify-content-center align-items-center flex-grow-1 bd-highlight" [ngClass]="i == 0 ? '' : ''">
             <h1>{{ manifiesto.seq }}</h1>
@@ -86,10 +115,10 @@
               <!-- Jala OK, se sale un poco la imagen -->
               <div
                 *ngFor="let material of manifiesto.materiales"
-                class="m-2 card-item d-flex flex-column justify-content-center align-items-center bd-highlight" style=" height: 10rem; width: 10rem;">
-                  <img class="rounded object-fit-cover" src="{{ imagen+material.Parte+'.jpg' }}"  alt="..." height="70%" width="150px">
+                class="p-2 m-2 card-item d-flex flex-column justify-content-center align-items-center bd-highlight" style=" height: 10rem; width: 10rem;">
+                  <img class="rounded object-fit-cover" [src]=" imagen+material.Parte+'.jpg' "  alt="..." height="70%" width="150px" appHideMissing>
                   <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text text-black">
                       {{ material.Parte }}
                     </p>
                   </div>
@@ -105,15 +134,22 @@
 
     <ng-template #secondaryCard>
 
-      <div class="mt-4 ps-2 pt-2 secondary-card ">
+      <div class="mt-4 ps-2 pt-2 secondary-card" style="background-color: {{ manifiesto.color }}; color: #fff">
         <div class="row">
           <div class="secondary-text col-4 d-flex justify-content-start align-items-center">
+            <!-- <button class="btn" style="background-color: {{ manifiesto.color }}"></button> -->
             <span class="ms-4">{{ manifiesto.seq }}</span>
             <span class="ms-4">{{ manifiesto.NumSerie }}</span>
             <span class="ms-4">{{ manifiesto.modelo }}</span>
           </div>
 
           <div class="col-8 d-flex justify-content-evenly">
+
+
+          <!-- <div class="color-indicator"></div> -->
+          <!-- <div class="p-2 color-indicator">
+          </div> -->
+
 
             <div class="d-flex d-inline scrollmenu align-items-center">
 

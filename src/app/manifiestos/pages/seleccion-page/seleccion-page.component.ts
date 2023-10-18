@@ -19,8 +19,10 @@ export class SeleccionPageComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem('brazo');
     localStorage.removeItem('seccion');
+    localStorage.removeItem('ubicacion');
     localStorage.removeItem('num_serie');
     localStorage.removeItem('diferencia');
+    localStorage.removeItem('factor');
 
     this.seleccionService.getBrazos()
       .subscribe( ({data}) => {

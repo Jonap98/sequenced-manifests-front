@@ -6,6 +6,8 @@ export interface Manifiesto {
   Escaner:    string;
   NumSerie:   string;
   materiales: Material[];
+  image?: string;
+  color?: string;
 }
 
 export interface Material {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { VerManifiestosService } from '../../services/ver-manifiestos.service';
 
@@ -14,13 +14,20 @@ export class SincronizarManifiestosComponent implements OnInit {
     private manifiestosService: VerManifiestosService
   ) {}
 
+  @Input()
+  public titulo?: string;
+
+  @Input()
+  public bySerial?: boolean;
+
   @Output()
   public onSyncData = new EventEmitter<string>();
 
   public syncForm?: FormGroup;
   ngOnInit(): void {
     this.syncForm = this.fb.group({
-      num_serie: [''],
+      factor_sincronizacion: [''],
+      by_serial: [false]
     });
   }
 
@@ -28,7 +35,9 @@ export class SincronizarManifiestosComponent implements OnInit {
     if( this.syncForm!.invalid )
       return
 
-    this.onSyncData.emit( this.syncForm!.value.num_serie );
+    this.syncForm!.value.by_serial = this.bySerial;
+
+    this.onSyncData.emit( this.syncForm!.value );
 
     this.syncForm?.reset();
   }

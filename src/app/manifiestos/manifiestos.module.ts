@@ -7,6 +7,7 @@ import { VerManifiestosPageComponent } from './pages/ver-manifiestos-page/ver-ma
 import { SeleccionPageComponent } from './pages/seleccion-page/seleccion-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { SincronizarManifiestosComponent } from './components/sincronizar-manifiestos/sincronizar-manifiestos.component';
+import { HideMissingDirective } from './pages/ver-manifiestos-page/hide-missing.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SincronizarManifiestosComponent } from './components/sincronizar-manifi
     VerManifiestosPageComponent,
     SeleccionPageComponent,
     LayoutPageComponent,
-    SincronizarManifiestosComponent
+    SincronizarManifiestosComponent,
+    HideMissingDirective
   ],
   imports: [
     CommonModule,
